@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Manchester United Rankings!</title>
+	</head>
+
+	<body>
+		<h2>Michael!</h2>
+		<img src="/static/michael.jpg" style=" width:300px;height:300px">
+		<h3>Ranking: <b></b></h3>
+		<h3>Votes: <b>{{votesm}}</b></h3>
+
+		<form action="/like" method=post>
+			<input type="hidden" name="name" value="michael" />
+			<input name="michael" type="submit">Like</button>
+		</form>
+		<form action="/unlike" method=post>
+			<input type="hidden" name="name" value="michael" />
+			<input name="michael" type="submit">Unlike</button>
+		</form>
+
+		<hr>
+		<h2>Antonio!</h2>
+		<img src="/static/antonio.jpg" style=" width:300px;height:300px">
+		<h3>Ranking: <b></b></h3>
+		<h3>Votes: <b>{{votesa}}</b></h3>
+
+		<form action="/like" method=post>
+			<input type="hidden" name="name" value="antonio" />
+			<input name="antonio" type="submit">Like</button>
+		</form>
+		<form action="/unlike" method=post>
+			<input type="hidden" name="name" value="antonio" />
+			<input name="antonio" type="submit">Unlike</button>
+		</form>
+
+
+		<hr>
+		<h2>Wayne!</h2>
+		<img src="/static/wayne.jpg" style=" width:300px;height:300px">
+		<h3>Ranking: <b></b></h3>
+		<h3>Votes: <b>{{votesw}}</b></h3>
+
+		<form action="/like" method=post>
+			<input type="hidden" name="name" value="wayne" />
+			<input name="michael" type="submit">Like</button>
+		</form>
+		<form action="/unlike" method=post>
+			<input type="hidden" name="name" value="wayne" />
+			<input name="michael" type="submit">Unlike</button>
+		</form>
+
+	</body>
+</html>
