@@ -3,53 +3,55 @@
 <html>
 	<head>
 		<title>Manchester United Fan Site</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	</head>
 
+	{{var}}
+
 	<body>
-		<h2>Michael Carrick</h2>
-		<img src="/static/michael.jpg" style=" width:300px;height:300px">
-		<h3>Ranking: <b></b></h3>
-		<h3>Votes: <b>{{votesm}}</b></h3>
+		<div class="jumbotron">
+			<h1>Yoav's Manchester United Page!</h1>
+			<p>Vote on your favorite players!</p>
+		</div>
 
-		<form action="/like" method=post>
-			<input type="hidden" name="name" value="michael" />
-			<input name="michael" type="submit">Like</button>
-		</form>
-		<form action="/unlike" method=post>
-			<input type="hidden" name="name" value="michael" />
-			<input name="michael" type="submit">Unlike</button>
-		</form>
+		<table class="table">
+				<tr>
+					<td>Picture</td>
+					<td>Name</td>
+					<td>Score</td>
+					<td></td>
+					<td></td>
+				</tr>
+			{% for player in data | sort(attribute='score', reverse=True) %}
+				<tr>
+					<td><img src="/static/{{player['name']}}.jpg" style="width:100px;height:100px" class="img-circle"></td>
+					<td>{{player['name']}}</td>
+					<td>{{player['score']}}</td>
 
-		<hr>
-		<h2>Antonio!</h2>
-		<img src="/static/antonio.jpg" style=" width:300px;height:300px">
-		<h3>Ranking: <b></b></h3>
-		<h3>Votes: <b>{{votesa}}</b></h3>
+					<td>
+						<form action="/like" method=post>
+							<input type="hidden" name="name" value="{{player['name']}}" />
+							<input name="{{player['name']}}" type="submit" class="btn btn-success" value="Vote Up!" />
+						</form>
+					</td>
 
-		<form action="/like" method=post>
-			<input type="hidden" name="name" value="antonio" />
-			<input name="antonio" type="submit">Like</button>
-		</form>
-		<form action="/unlike" method=post>
-			<input type="hidden" name="name" value="antonio" />
-			<input name="antonio" type="submit">Unlike</button>
-		</form>
-
-
-		<hr>
-		<h2>Wayne!</h2>
-		<img src="/static/wayne.jpg" style=" width:300px;height:300px">
-		<h3>Ranking: <b></b></h3>
-		<h3>Votes: <b>{{votesw}}</b></h3>
-
-		<form action="/like" method=post>
-			<input type="hidden" name="name" value="wayne" />
-			<input name="michael" type="submit">Like</button>
-		</form>
-		<form action="/unlike" method=post>
-			<input type="hidden" name="name" value="wayne" />
-			<input name="michael" type="submit">Unlike</button>
-		</form>
+					<td>
+						<form action="/unlike" method=post>
+							<input type="hidden" name="name" value="{{player['name']}}" />
+							<input name="{{player['name']}}" type="submit" class="btn btn-danger" value="Vote Down!"/>
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
 
 	</body>
 </html>
